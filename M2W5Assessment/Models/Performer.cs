@@ -4,12 +4,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace M2W5Assessment
+namespace M2W5Assessment.Models
 {
-    public class Concert
+    public class Performer
     {
         public int Id { get; set; }
         public string Name { get; set; }
-        public DateTime ShowDate { get; set; }
+        public string ActDescription { get; set; }
+        public List<Concert> Concerts { get; set; }
     }
 }
