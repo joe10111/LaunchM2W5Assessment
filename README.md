@@ -34,7 +34,7 @@ namespace BusTransitApp
         public class Route
         {
             public int Id {get; set;}
-            public float flare {get; set;}
+            public float Flare {get; set;}
             public List<Stop> Stops;
         }
     }
@@ -44,7 +44,7 @@ namespace BusTransitApp
         public class Stop
         {
             public int Id {get; set;}
-	        public string name {get; set;}
+	        public string Name {get; set;}
 	        public List<Route> Routes;
         }
     }
@@ -62,18 +62,28 @@ namespace BusTransitApp.Data
         {
             if (!context.Route.Any())
             {
-	            Route routue_1 = new Route { Flare = 1.0;  Stops = new List<Stop>{stop_1, stop_2}};
-                Route routue_2 = new Route { Flare = 2.0;  Stops = new List<Stop_1>{stop_1}};
-            	
-	            Stop stop_1 = new Stop { Name = "Stop 1";  Routes = new List<Route>{ routue_1 }};
-                Stop stop_2 = new Stop { Name = "Stop 1";  Routes = new List<Route>{ routue_1, routue_2 }};
+                 // Create Route instances
+                Route route1 = new Route { Flare = 1.0 };
+                Route route2 = new Route { Flare = 2.0 };
+
+                 // Create Stop instances
+                Stop stop1 = new Stop { Name = "Stop 1" };
+                Stop stop2 = new Stop { Name = "Stop 2" };
+
+                 // Making the many-to-many relationship 
+                route1.Stops = new List<Stop> { stop1, stop2 };
+                route2.Stops = new List<Stop> { stop1 };
+
+                 // Making the many-to-many relationship between Stop and Route
+                stop1.Routes = new List<Route> { route1, route2 };
+                stop2.Routes = new List<Route> { route1 };
+
+                 // Add the instances to the context using add range
+                context.Route.AddRange(route1, route2);
+                context.Stop.AddRange(stop1, stop2);
             }
-            context.Route.Add(routue_1);
-            context.Route.Add(routue_2);
-            context.Stop.Add(stop_1);
-            context.Stop.Add(stop_2);
-            
-            context.SaveChanges();
+           // Save changes to context
+          context.SaveChanges();
         }
     }
 }
