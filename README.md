@@ -26,12 +26,16 @@ Start by Forking this repo.
 
 <img width="600" alt="Stop and Route ERD" src="https://user-images.githubusercontent.com/11747682/228308854-d2328b8c-32d2-4eb9-aa0d-8a2b3d4c6bfa.png">
 
+1. Replace the ____________s with the code required to create the models required for the following entity relationship diagram. Don't worry about `Routeid` vs `RoutesId` and `Stopid` vs `StopsId`, either is fine. Also, no need to include the `terminus` column. (2 points possible)
+
 ```C#
 namespace BusTransitApp
     {
         public class Route
         {
-            _____________________
+            public int Id {get; set;}
+            public float flare {get; set;}
+            public List<Stop> Stops;
         }
     }
 
@@ -39,7 +43,9 @@ namespace BusTransitApp
     {
         public class Stop
         {
-            _______________________
+            public int Id {get; set;}
+	        public string name {get; set;}
+	        public List<Route> Routes;
         }
     }
 ```
@@ -54,10 +60,20 @@ namespace BusTransitApp.Data
     {
         public static void SeedRoutesAndStops(BusTransitContext context)
         {
-            if (______________)
+            if (!context.Route.Any())
             {
-                ______________________________
+	            Route routue_1 = new Route { Flare = 1.0;  Stops = new List<Stop>{stop_1, stop_2}};
+                Route routue_2 = new Route { Flare = 2.0;  Stops = new List<Stop_1>{stop_1}};
+            	
+	            Stop stop_1 = new Stop { Name = "Stop 1";  Routes = new List<Route>{ routue_1 }};
+                Stop stop_2 = new Stop { Name = "Stop 1";  Routes = new List<Route>{ routue_1, routue_2 }};
             }
+            context.Route.Add(routue_1);
+            context.Route.Add(routue_2);
+            context.Stop.Add(stop_1);
+            context.Stop.Add(stop_2);
+            
+            context.SaveChanges();
         }
     }
 }
