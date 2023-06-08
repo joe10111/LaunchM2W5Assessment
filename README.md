@@ -8,13 +8,13 @@ Start by Forking this repo.
     a. Seed data is usually an object instance of a model that is represented by strings, integers, booleans, etc. The data that is generated from a data seeder class can seed the database using the database context connection.    
 
 1. Deleting a database column is a dangerous action, what might happen if you delete a column you didn't mean to? (1 point possible)
-    a. If you delete a column in a database through ORM you'll first get a warning in your package manager console letting you know you are about to scaffold that collum from the database. If you proceed and delete a collum you didn't mean to you can use the previous migrations down method to revert the changes using the command 'undo'. 
+    a. If you delete a column in a database through ORM you'll first get a warning in your package manager console letting you know you are about to scaffold that collum from the database. If you proceed and delete a collum you didn't mean to you can use the previous migrations down method to revert the changes using the command 'Remove-Migration'. 
 
 1. Write out at least 3 steps to describe the process of adding a new column to your database using entity framework. (1 point possible)
     a.  First, go to the class in Visual Studios and write the collum you would like to add as properties attached to the class. Secondly, you can then run the command 'add-migration' with a message after the command, to generate the migration file. Last you want to then run the command 'update database'  this will add the up method from your migration to your database. 
 
 1. When I run `Update-Database`, which function in the migration is used `Up` or `Down`? (1 point possible)
-    a. When you run Update-Database the up method is used, it uses Linq and custom in-line methods to translate our c# classes into database information. If I wanted to revert those changes I could use the 'Undo' command to run the down method.
+    a. When you run Update-Database the up method is used, it uses Linq and custom in-line methods to translate our c# classes into database information. If I wanted to revert those changes I could use the 'Remove-Migration' command to run the down method.
     
 1. When was Entity Framework Core version 7.0 released? As always, feel free to use google as a resource in answering this question. (1 point possible)
     a.  According to the Microsofts Entity Framework page Entity Framework Core version 7.0 was released in November 2022.
