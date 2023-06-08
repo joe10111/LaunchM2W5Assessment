@@ -3,6 +3,7 @@ using System;
 using M2W5Assessment.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
@@ -11,9 +12,10 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace M2W5Assessment.Migrations
 {
     [DbContext(typeof(ConcertContext))]
-    partial class ConcertContextModelSnapshot : ModelSnapshot
+    [Migration("20230608162050_FixedDataBase")]
+    partial class FixedDataBase
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
